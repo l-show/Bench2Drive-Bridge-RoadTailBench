@@ -1,0 +1,169 @@
+{
+  "scenario_id": "roadtail_demo_001",
+  "route_id": "RouteScenario_0",
+  "metrics": {
+    "route_completion": {
+      "name": "route_completion",
+      "score": 0.02,
+      "details": {
+        "completed_distance_m": 2.0,
+        "route_length_m": 100.0,
+        "max_lateral_error_m": 0.0
+      }
+    },
+    "collision_penalty": {
+      "name": "collision_penalty",
+      "score": 1.0,
+      "details": {
+        "collision_count": 0,
+        "counts_by_type": {}
+      }
+    },
+    "driving_efficiency": {
+      "name": "driving_efficiency",
+      "score": 0.8850000000000001,
+      "details": {
+        "low_speed_frame_ratio": 0.0,
+        "reference_speed_kmh": 80.0
+      }
+    },
+    "speed_appropriateness": {
+      "name": "speed_appropriateness",
+      "score": 0.8850000000000001,
+      "details": {
+        "mean_frame_score": 0.8850000000000001
+      }
+    },
+    "drivable_area": {
+      "name": "drivable_area",
+      "score": 1.0,
+      "details": {
+        "max_violation_m": 0.0,
+        "used_polygon": false
+      }
+    },
+    "omnidirectional_interaction_risk": {
+      "name": "omnidirectional_interaction_risk",
+      "score": 0.6489108226644378,
+      "details": {
+        "mean_risk": 0.3510891773355622,
+        "worst": {
+          "risk": 0.5268531967264796,
+          "frame": 1,
+          "time": 0.05,
+          "actor": 2
+        }
+      }
+    },
+    "road_engineering_hazard_adaptation": {
+      "name": "road_engineering_hazard_adaptation",
+      "score": 0.9813564329065776,
+      "details": {
+        "group_scores": {
+          "A_infrastructure": 1.0,
+          "B_traffic_interaction": 1.0,
+          "C_environment": 0.9067821645328876
+        },
+        "subtype_scores": {
+          "A_infrastructure": {
+            "traffic_sign_marking": 1.0,
+            "separation_protection": 1.0,
+            "speed_control_facility": 1.0,
+            "lighting_facility": 1.0,
+            "pavement_condition": 1.0,
+            "alignment_geometry": 1.0,
+            "sight_distance": 1.0,
+            "clearance_intrusion": 1.0
+          },
+          "B_traffic_interaction": {
+            "overtaking_bypass": null,
+            "merging_flow": null,
+            "emergency_avoidance": null,
+            "yielding_priority": null
+          },
+          "C_environment": {
+            "low_light": 0.9067821645328876,
+            "glare": 0.9067821645328876,
+            "fog": 0.9067821645328876,
+            "rain_wet": 0.9067821645328876,
+            "snow_low_friction": 0.9067821645328876,
+            "wind_dust_visibility": 0.9067821645328876
+          }
+        }
+      }
+    },
+    "comfort": {
+      "name": "comfort",
+      "score": 0.6666666666666666,
+      "details": {
+        "violations": {
+          "lat_acc": 0,
+          "lon_acc": 0,
+          "jerk": 1,
+          "yaw_rate": 0,
+          "yaw_acc": 0
+        }
+      }
+    },
+    "control_stability": {
+      "name": "control_stability",
+      "score": 0.9048374180359595,
+      "details": {
+        "mean_jitter": 0.1,
+        "brake_throttle_conflict_rate": 0.0
+      }
+    },
+    "long_tail_hazard_response": {
+      "name": "long_tail_hazard_response",
+      "score": 1.0,
+      "details": {
+        "hazard_responses": [
+          {
+            "id": "rock_001",
+            "type": "rock",
+            "reaction_time_s": null,
+            "score": 1.0
+          }
+        ]
+      }
+    },
+    "roadtailbench_driving_score": {
+      "name": "roadtailbench_driving_score",
+      "score": 1.0484866592392448,
+      "details": {
+        "route_completion": 0.02,
+        "collision_penalty": 1.0,
+        "driving_efficiency": 0.8850000000000001,
+        "speed_appropriateness": 0.8850000000000001,
+        "drivable_area": 1.0,
+        "interaction": 0.6489108226644378,
+        "road_engineering_hazard_adaptation": 0.9813564329065776,
+        "comfort": 0.6666666666666666,
+        "control_stability": 0.9048374180359595,
+        "long_tail_hazard_response": 1.0
+      }
+    },
+    "ability_score": {
+      "name": "ability_score",
+      "score": 0.0,
+      "details": {
+        "success": false,
+        "scenario_tags": [
+          "A.traffic_sign_marking",
+          "A.pavement_condition",
+          "C.fog"
+        ],
+        "group_scores": {
+          "A": 0.0,
+          "B": null,
+          "C": 0.0
+        },
+        "subtype_scores": {
+          "A.traffic_sign_marking": 0.0,
+          "A.pavement_condition": 0.0,
+          "C.fog": 0.0
+        }
+      }
+    }
+  }
+}

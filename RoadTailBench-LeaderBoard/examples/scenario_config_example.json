@@ -1,0 +1,48 @@
+{
+  "scenario_id": "roadtail_demo_001",
+  "route_id": "RouteScenario_0",
+  "reference_speed_kmh": 80,
+  "allowed_lateral_error_m": 2.0,
+  "route": [[0, 0], [50, 0], [100, 0]],
+  "speed_zones": [
+    {"id": "curve_wet_zone", "center": [50, 0], "radius": 20, "target_speed_kmh": 40}
+  ],
+  "hazards": [
+    {
+      "id": "rock_001",
+      "type": "rock",
+      "center": [60, 1.5],
+      "radius_m": 2.0,
+      "perception_radius_m": 25,
+      "danger_radius_m": 3.0
+    }
+  ],
+  "hazard_zones": [
+    {
+      "id": "worn_marking_curve",
+      "category": "A",
+      "subtype": "traffic_sign_marking",
+      "center": [45, 0],
+      "radius_m": 30
+    },
+    {
+      "id": "wet_pavement",
+      "category": "A",
+      "subtype": "pavement_condition",
+      "center": [55, 0],
+      "radius_m": 25
+    },
+    {
+      "id": "heavy_fog",
+      "category": "C",
+      "subtype": "fog",
+      "center": [50, 0],
+      "radius_m": 60
+    }
+  ],
+  "scenario_tags": [
+    "A.traffic_sign_marking",
+    "A.pavement_condition",
+    "C.fog"
+  ]
+}
