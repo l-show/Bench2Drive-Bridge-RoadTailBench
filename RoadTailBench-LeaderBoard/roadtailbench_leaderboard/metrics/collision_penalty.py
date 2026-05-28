@@ -31,18 +31,20 @@ class CollisionPenaltyMetric(BaseMetric):
     name = "collision_penalty"
 
     def compute(self, frames, config, context=None):
-        seen = set()
         collisions = []
+        last_by_actor = {}
+        merge_window_s = float(config.get("collision_merge_window_s", 5.0))
         for frame in frames:
             for collision in frame.get("collisions", []):
-                key = (
-                    collision.get("frame", frame.get("frame")),
+                actor_key = (
                     collision.get("other_actor_id"),
                     collision.get("other_actor_type"),
+                    classify_collision_type(collision),
                 )
-                if key in seen:
+                t = float(frame.get("time", collision.get("time", 0.0)))
+                if actor_key in last_by_actor and t - last_by_actor[actor_key] <= merge_window_s:
                     continue
-                seen.add(key)
+                last_by_actor[actor_key] = t
                 collisions.append(collision)
         penalty = 1.0
         counts = {}

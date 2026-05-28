@@ -1,0 +1,66 @@
+{
+  "schema_version": "roadtailbench.scenario.v1",
+  "scenario_id": "roadtail_town01_curve_wet_001",
+  "scenario_family": "RoadEngineeringLongTail",
+  "scenario_tags": [
+    "A.pavement_condition",
+    "A.traffic_sign_marking",
+    "C.rain_wet"
+  ],
+  "reference_speed_kmh": 50,
+  "allowed_lateral_error_m": 2.0,
+  "actor_log_radius_m": 100.0,
+  "speed_zones": [
+    {
+      "id": "wet_curve_slow_zone",
+      "center": [120.0, 35.0],
+      "radius": 35.0,
+      "target_speed_kmh": 30,
+      "reason": "wet_curve"
+    }
+  ],
+  "hazards": [
+    {
+      "id": "fallen_rock_001",
+      "type": "rock",
+      "center": [135.0, 36.5],
+      "radius_m": 2.0,
+      "perception_radius_m": 35.0,
+      "danger_radius_m": 4.0,
+      "allow_enter_danger_zone": false,
+      "expected_behavior": "slow_or_bypass"
+    }
+  ],
+  "hazard_zones": [
+    {
+      "id": "wet_curve_marking_zone",
+      "category": "A",
+      "subtype": "pavement_condition",
+      "center": [120.0, 35.0],
+      "radius_m": 40.0,
+      "target_speed_kmh": 30
+    },
+    {
+      "id": "rain_visibility_zone",
+      "category": "C",
+      "subtype": "rain_wet",
+      "center": [120.0, 35.0],
+      "radius_m": 60.0,
+      "target_speed_kmh": 35
+    }
+  ],
+  "drivable_polygons": [
+    [
+      [80.0, 20.0],
+      [170.0, 20.0],
+      [170.0, 50.0],
+      [80.0, 50.0]
+    ]
+  ],
+  "road_engineering_ability_weights": {
+    "A_infrastructure": 0.5,
+    "B_traffic_interaction": 0.3,
+    "C_environment": 0.2
+  },
+  "notes": "复制此文件后按 route_id、route name 或 scenario name 命名，放到 ROADTAILBENCH_METADATA_ROOT。"
+}

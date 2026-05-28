@@ -31,6 +31,16 @@ class LongTailHazardResponseMetric(BaseMetric):
                     enter_time = t
                 if enter_time is not None and d <= danger_radius:
                     collision_or_violation = True
+                for collision in frame.get("collisions", []):
+                    text = " ".join(str(collision.get(k, "")) for k in ("type", "other_actor_type", "message")).lower()
+                    hazard_id = str(hazard.get("id", "")).lower()
+                    hazard_type = str(hazard.get("type", "")).lower()
+                    if (hazard_id and hazard_id in text) or (hazard_type and hazard_type in text):
+                        collision_or_violation = True
+                for event in frame.get("bench2drive_events", []):
+                    etype = str(event.get("type", "")).lower()
+                    if "collision" in etype or "outside" in etype or "deviation" in etype:
+                        collision_or_violation = True
                 if enter_time is not None and response_time is None:
                     cur_control = control(e)
                     cur_speed = speed_mps(e)

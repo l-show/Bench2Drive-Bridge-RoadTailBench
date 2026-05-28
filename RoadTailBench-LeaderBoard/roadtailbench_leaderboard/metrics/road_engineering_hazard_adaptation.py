@@ -1,5 +1,5 @@
 from .base import BaseMetric, MetricResult
-from ..extractors import ego, location_xy
+from ..extractors import ego, location_xy, speed_mps
 from ..geometry import clamp, distance2
 
 
@@ -40,10 +40,18 @@ class RoadEngineeringHazardAdaptationMetric(BaseMetric):
         local_frames = [f for f in frames if distance2(location_xy(ego(f)), center) <= radius]
         if not local_frames:
             return 1.0
+        # 这里优先使用全局指标作为保守 fallback。若场景配置提供局部限速，
+        # 则在 hazard zone 内重新估计速度合理性，避免区域能力完全退化为全局均值。
         drivable = context.get("drivable_area", {}).get("score", 1.0) if context else 1.0
-        speed = context.get("speed_appropriateness", {}).get("score", 1.0) if context else 1.0
         interaction = context.get("omnidirectional_interaction_risk", {}).get("score", 1.0) if context else 1.0
         collision = context.get("collision_penalty", {}).get("score", 1.0) if context else 1.0
+        target_speed_kmh = zone.get("target_speed_kmh")
+        if target_speed_kmh is None:
+            speed = context.get("speed_appropriateness", {}).get("score", 1.0) if context else 1.0
+        else:
+            target = max(float(target_speed_kmh) / 3.6, 0.1)
+            vals = [1.0 - clamp(abs(speed_mps(ego(f)) - target) / target) for f in local_frames]
+            speed = sum(vals) / len(vals)
         safe_pass = 1.0 if collision >= 0.999 else 0.0
         return clamp(0.35 * safe_pass + 0.25 * drivable + 0.20 * speed + 0.20 * interaction)
 
