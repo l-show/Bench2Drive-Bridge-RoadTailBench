@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Bench2Drive 路线和场景配置教学 Demo
+
+  这个文件用于快速理解 Bench2Drive 的 route XML 结构，不建议直接作为正式评测文件使用。
+  如果要真实运行，请把坐标替换成当前 CARLA 地图上有效的路点，并确认场景 trigger_point
+  离插值后的路线足够近。
+
+  解析入口：
+    leaderboard/leaderboard/utils/route_parser.py
+
+  运行时关系：
+    1. leaderboard 的 routes 参数指向这类 XML 文件。
+    2. 每个 route 变成一个 RouteScenarioConfiguration。
+    3. route 里的 waypoints 被插值成 ego 需要行驶的全局路线。
+    4. route 里的 scenario 根据 type 字段动态找到同名 Python 场景类。
+    5. 场景类实际在 scenario_runner/srunner/scenarios/*.py 中实现。
+-->
+<routes>
+  <!--
+    一个 route 就是一条评测路线。
+
+    id：
+      路线编号，必须在同一个 XML 内唯一。
+      启动时可以通过 routes-subset 只跑某几个 id。
+
+    town：
+      CARLA 地图名，必须和当前加载地图一致，例如 Town12。
+      Bench2Drive 的主路线大多在 Town12。
+  -->
+  <route id="900001" town="Town12">
+
+    <!--
+      weathers 定义沿路线变化的天气。
+
+      route_percentage：
+        0 表示路线起点，100 表示路线终点。
+        中间也可以写 30、60 等，Bench2Drive 会按路线进度切换或插值使用。
+
+      其他字段：
+        会映射到 carla.WeatherParameters 上同名属性。
+        如果写了 CARLA 不认识的属性，route_parser.py 会打印 WARNING 并忽略。
+    -->
+    <weathers>
+      <weather route_percentage="0"
+               cloudiness="5.0"
+               precipitation="0.0"
+               precipitation_deposits="0.0"
+               wetness="0.0"
+               wind_intensity="10.0"
+               sun_azimuth_angle="-1.0"
+               sun_altitude_angle="90.0"
+               fog_density="2.0"/>
+
+      <weather route_percentage="100"
+               cloudiness="20.0"
+               precipitation="0.0"
+               precipitation_deposits="0.0"
+               wetness="0.0"
+               wind_intensity="15.0"
+               sun_azimuth_angle="-1.0"
+               sun_altitude_angle="25.0"
+               fog_density="5.0"/>
+    </weathers>
+
+    <!--
+      waypoints 是 ego 的路线关键点。
+
+      每个 position 只有 x、y、z，没有 yaw。
+      Bench2Drive 会调用 route_manipulation 对关键点进行插值，生成更密的 Transform 路线。
+
+      注意：
+        这些点必须在 town 对应地图的可驾驶道路附近。
+        z 一般跟地图高度一致即可，略有误差通常会被 CARLA 路网吸附处理。
+        起点附近会生成 ego，终点用于 RouteCompletion 等完成度指标。
+    -->
+    <waypoints>
+      <!-- 起点，通常放在 ego 初始位置所在车道附近。 -->
+      <position x="983.5" y="5382.2" z="371.0"/>
+
+      <!-- 中间关键点，用来控制路线走向，不需要每几米写一个。 -->
+      <position x="824.2" y="5575.3" z="371.0"/>
+      <position x="605.5" y="5575.5" z="370.0"/>
+      <position x="497.5" y="5718.3" z="368.0"/>
+
+      <!-- 终点，RouteCompletion 会根据 ego 沿路线推进程度计算完成率。 -->
+      <position x="516.3" y="5897.4" z="364.0"/>
+    </waypoints>
+
+    <!--
+      scenarios 是这条 route 上挂载的触发式场景。
+
+      每个 scenario 的 name：
+        场景实例名，主要用于日志和区分同类场景的第几个实例。
+
+      每个 scenario 的 type：
+        非常关键。它必须能对应到 scenario_runner/srunner/scenarios 里的 Python 类名。
+        例如 type="ParkingCutIn" 会使用 parking_cut_in.py 里的 class ParkingCutIn。
+
+      trigger_point：
+        场景触发参考点，必须包含 x、y、z、yaw。
+        route_parser.py 会检查 trigger_point 是否靠近插值后的 ego 路线。
+        当前阈值是水平距离小于 2 米，yaw 差小于 10 度。
+
+      其他子标签：
+        例如 direction、distance、speed、crossing_angle。
+        route_parser.py 不理解这些业务含义，只会把它们放进
+        scenario_config.other_parameters。
+        真正含义由具体 Python 场景类自己读取。
+    -->
+    <scenarios>
+
+      <!--
+        示例一：ParkingCutIn
+
+        Python 实现：
+          scenario_runner/srunner/scenarios/parking_cut_in.py
+
+        行为含义：
+          路边停放车辆在 ego 接近时切入 ego 车道，迫使 ego 减速或避让。
+
+        参数：
+          direction value="right" 表示从路线右侧停车位切入。
+          这个类只显式读取 direction，其他距离和速度在类内有默认值。
+      -->
+      <scenario name="ParkingCutIn_demo_1" type="ParkingCutIn">
+        <trigger_point x="983.5" y="5382.2" z="371.0" yaw="90.0"/>
+        <direction value="right"/>
+      </scenario>
+
+      <!--
+        示例二：ParkedObstacle
+
+        Python 实现：
+          scenario_runner/srunner/scenarios/route_obstacles.py
+
+        行为含义：
+          路边或车道边存在异常停放车辆和警示物，ego 需要绕行。
+
+        常用参数：
+          distance：障碍物沿路线前方生成距离，单位通常按米理解。
+          direction：障碍物位于路线左侧或右侧。
+          speed：场景内限制或背景逻辑使用的速度参数，具体以类实现为准。
+      -->
+      <scenario name="ParkedObstacle_demo_1" type="ParkedObstacle">
+        <trigger_point x="824.2" y="5575.3" z="371.0" yaw="180.0"/>
+        <distance value="80"/>
+        <direction value="right"/>
+        <speed value="40"/>
+      </scenario>
+
+      <!--
+        示例三：DynamicObjectCrossing
+
+        Python 实现：
+          scenario_runner/srunner/scenarios/object_crash_vehicle.py
+
+        行为含义：
+          行人或骑行者从遮挡物后横穿道路，测试 ego 对动态横穿目标的反应。
+
+        常用参数：
+          distance：横穿目标相对 trigger 点的生成距离。
+          direction：从路线左侧或右侧横穿。
+          blocker_model：遮挡物蓝图，例如售货机、车辆或其他静态道具。
+          crossing_angle：横穿角度，代码要求在 -90 到 90 度之间。
+      -->
+      <scenario name="DynamicObjectCrossing_demo_1" type="DynamicObjectCrossing">
+        <trigger_point x="605.5" y="5575.5" z="370.0" yaw="180.0"/>
+        <distance value="12"/>
+        <direction value="right"/>
+        <blocker_model value="static.prop.vendingmachine"/>
+        <crossing_angle value="15"/>
+      </scenario>
+
+    </scenarios>
+  </route>
+</routes>
