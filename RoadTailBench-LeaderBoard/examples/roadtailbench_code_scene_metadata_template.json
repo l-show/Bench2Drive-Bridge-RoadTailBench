@@ -1,0 +1,52 @@
+{
+  "schema_version": "roadtailbench.code_scene_metadata.v1",
+  "scenario_id": "RTB101",
+  "town": "Town_RoadTail_Example",
+  "description": "这里写中文场景说明：静态关卡由 RoadRunner/OpenDRIVE 构建，动态逻辑由 RTB101.py 控制。",
+  "ego_blueprint": "vehicle.tesla.model3",
+  "ego_start": {
+    "location": { "x": 206.059, "y": -1.401, "z": 4.228 },
+    "rotation": { "pitch": -2.486, "yaw": 171.544, "roll": 0.0 }
+  },
+  "ego_end": {
+    "location": { "x": 54.588, "y": -2.018, "z": 3.962 },
+    "rotation": { "pitch": 0.108, "yaw": 176.573, "roll": 0.0 }
+  },
+  "route_waypoints": [
+    { "location": { "x": 206.059, "y": -1.401, "z": 4.228 }, "rotation": { "yaw": 171.544 } },
+    { "location": { "x": 130.0, "y": -1.7, "z": 4.65 }, "rotation": { "yaw": 176.0 } },
+    { "location": { "x": 54.588, "y": -2.018, "z": 3.962 }, "rotation": { "yaw": 176.573 } }
+  ],
+  "reference_speed_kmh": 35.0,
+  "speed_zones": [
+    {
+      "name": "intersection_approach",
+      "center": [130.0, -1.7, 4.7],
+      "radius_m": 35.0,
+      "target_speed_kmh": 25.0
+    }
+  ],
+  "hazard_zones": [
+    {
+      "name": "leaf_low_friction_conflict_zone",
+      "center": [108.5, -1.8, 4.7],
+      "radius_m": 24.0,
+      "hazard_type": "low_friction_intersection_conflict"
+    }
+  ],
+  "hazards": [
+    {
+      "name": "background_vehicle_release",
+      "type": "vehicle_conflict",
+      "trigger": "ego_near_stop_decision_zone",
+      "center": [108.5, -1.8, 4.7]
+    }
+  ],
+  "scenario_tags": [
+    "glare",
+    "abnormal_traffic_light",
+    "missing_stop_line",
+    "low_friction",
+    "intersection_conflict"
+  ]
+}
