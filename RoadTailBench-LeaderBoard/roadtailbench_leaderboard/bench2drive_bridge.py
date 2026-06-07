@@ -90,17 +90,24 @@ def _load_json(path):
 
 
 def evaluate_roadtailbench(frames, config):
+    warmup_frames = max(0, int(config.get("metric_warmup_frames", 2)))
+    evaluation_frames = frames[warmup_frames:] if len(frames) > warmup_frames else []
     results = {}
     for metric_cls in CORE_METRICS:
         metric = metric_cls()
-        result = metric.compute(frames, config, results)
+        result = metric.compute(evaluation_frames, config, results)
         results[result["name"]] = result
     for metric in (CompositeScoreMetric(), AbilityScoreMetric()):
-        result = metric.compute(frames, config, results)
+        result = metric.compute(evaluation_frames, config, results)
         results[result["name"]] = result
     return {
         "scenario_id": config.get("scenario_id", "unknown"),
         "route_id": config.get("route_id", "unknown"),
+        "evaluation": {
+            "raw_frame_count": len(frames),
+            "warmup_frames_excluded": warmup_frames,
+            "evaluated_frame_count": len(evaluation_frames),
+        },
         "metrics": results,
     }
 
@@ -167,6 +174,7 @@ class RoadTailBenchBridgeLogger:
             "weather": _weather_to_dict(weather),
             "reference_speed_kmh": 50.0,
             "allowed_lateral_error_m": 2.0,
+            "metric_warmup_frames": 2,
             "route": _route_to_xy(self.route_scenario.route),
             "scenario_tags": [],
             "speed_zones": [],

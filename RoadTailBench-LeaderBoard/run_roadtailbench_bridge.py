@@ -167,7 +167,8 @@ class RoadTailBenchBridgeEvaluator(LeaderboardEvaluator):
             self._register_statistics(config.index, entry_status, crash_message)
 
             if roadtailbench_logger:
-                route_record = self.statistics_manager._results.checkpoint.records[config.index].to_json()
+                records = self.statistics_manager._results.checkpoint.records
+                route_record = records[config.index].to_json() if config.index < len(records) else {}
                 output = roadtailbench_logger.close_and_evaluate(route_record)
                 print(f"\033[1m> RoadTailBench metrics saved: {output['metrics']}\033[0m", flush=True)
 

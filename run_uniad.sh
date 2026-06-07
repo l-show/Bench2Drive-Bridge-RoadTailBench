@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# 1. 基础路径配置
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+if [ -f "${SCRIPT_DIR}/leaderboard/run_uniad.sh" ]; then
+  exec bash "${SCRIPT_DIR}/leaderboard/run_uniad.sh" "$@"
+fi
+
+# 1. 基础路径配置
 export LEADERBOARD_ROOT=$SCRIPT_DIR
 export SCENARIO_RUNNER_ROOT="${LEADERBOARD_ROOT}/../scenario_runner"
 export ZOO_ROOT="${LEADERBOARD_ROOT}/../../Bench2DriveZoo"
