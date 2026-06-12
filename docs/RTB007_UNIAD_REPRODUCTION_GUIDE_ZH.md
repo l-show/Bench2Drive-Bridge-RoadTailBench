@@ -8,7 +8,7 @@
 
 - CARLA 源码工程：`/home/hqj/carla`
 - Bench2Drive + RoadTailBench 桥接仓库：`/home/hqj/Bench2Drive-Bridge-RoadTailBench`
-- UniAD 算法工作副本：`/home/hqj/bench2drive-work/Bench2DriveZoo`
+- UniAD 算法仓库：`/home/hqj/Bench2DriveZoo-Bridge-RoadTailBench`
 - RTB007 背景场景脚本：`/home/hqj/Carla_pythonproj/RTB7.py`
 - CARLA/UE 虚拟环境：`condacarla`
 - Bench2Drive/UniAD 虚拟环境：`bench_py38`
@@ -136,8 +136,8 @@ bash run_uniad.sh
 
 - route 文件：`leaderboard/data/routes_rtb007.xml`
 - town：`RTB007`
-- agent：`/home/hqj/bench2drive-work/Bench2DriveZoo/team_code/uniad_b2d_agent.py`
-- agent config：`/home/hqj/bench2drive-work/Bench2DriveZoo/adzoo/uniad/configs/stage2_e2e/base_e2e_b2d.py`
+- agent：`/home/hqj/Bench2DriveZoo-Bridge-RoadTailBench/team_code/uniad_b2d_agent.py`
+- agent config：`/home/hqj/Bench2DriveZoo-Bridge-RoadTailBench/adzoo/uniad/configs/stage2_e2e/base_e2e_b2d.py`
 - RT 指标输出：`leaderboard/roadtailbench_outputs/`
 - RT checkpoint：`leaderboard/rtb_results.json`
 - 超时保护：`ROADTAILBENCH_MAX_TICKS=2400`，约等于 120 秒仿真时间。

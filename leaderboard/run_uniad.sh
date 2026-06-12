@@ -5,11 +5,25 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 export LEADERBOARD_ROOT=$SCRIPT_DIR
 export SCENARIO_RUNNER_ROOT="${LEADERBOARD_ROOT}/../scenario_runner"
 export RTB_ROOT="${LEADERBOARD_ROOT}/../RoadTailBench-LeaderBoard"
-export ZOO_ROOT="/home/hqj/bench2drive-work/Bench2DriveZoo"
+export ZOO_ROOT="/home/hqj/Bench2DriveZoo-Bridge-RoadTailBench"
 export CARLA_ROOT="/home/hqj/carla"
+export B2D_ZOO_ROOT="${ZOO_ROOT}"
+
+ZOO_ALIAS="${LEADERBOARD_ROOT}/../Bench2DriveZoo"
+if [ -L "${ZOO_ALIAS}" ]; then
+  if [ "$(readlink -f "${ZOO_ALIAS}")" != "$(readlink -f "${ZOO_ROOT}")" ]; then
+    echo "Bench2DriveZoo symlink points to unexpected target: ${ZOO_ALIAS}" >&2
+    exit 1
+  fi
+elif [ -e "${ZOO_ALIAS}" ]; then
+  echo "Bench2DriveZoo path exists but is not the expected symlink: ${ZOO_ALIAS}" >&2
+  exit 1
+else
+  ln -s "${ZOO_ROOT}" "${ZOO_ALIAS}"
+fi
 
 # 2. 关键：把 Bench2DriveZoo 及其父目录加进环境变量
-export PYTHONPATH="${CARLA_ROOT}/PythonAPI/carla/dist/carla-0.9.15-py3.7-linux-x86_64.egg:${CARLA_ROOT}/PythonAPI/carla:${LEADERBOARD_ROOT}:${SCENARIO_RUNNER_ROOT}:${RTB_ROOT}:${ZOO_ROOT}:${ZOO_ROOT}/..:/home/hqj/bench2drive-work:${PYTHONPATH}"
+export PYTHONPATH="${CARLA_ROOT}/PythonAPI/carla/dist/carla-0.9.15-py3.7-linux-x86_64.egg:${CARLA_ROOT}/PythonAPI/carla:${LEADERBOARD_ROOT}:${SCENARIO_RUNNER_ROOT}:${RTB_ROOT}:${ZOO_ROOT}:${ZOO_ROOT}/..:${LEADERBOARD_ROOT}/..:${PYTHONPATH}"
 
 # 3. 评测参数配置
 export ROUTES=${LEADERBOARD_ROOT}/data/routes_rtb007.xml
