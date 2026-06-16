@@ -1,0 +1,253 @@
+{
+  "schema_version": "roadtailbench.scenario.v1",
+  "scenario_id": "RTB009",
+  "scenario_family": "RoadTailBenchCodeScenario",
+  "source_script": "G:\\RoadTailCode\\codex优化动态地图代码\\_codex_backup_20260615_191440\\RTB009.py",
+  "route_source": "EGO_TRAJECTORY_DATA",
+  "town": "RTB009",
+  "scenario_tags": [
+    "C.rain_wet",
+    "C.fog",
+    "C.glare",
+    "C.wind_dust_visibility",
+    "C.low_light"
+  ],
+  "reference_speed_kmh": 30.0,
+  "allowed_lateral_error_m": 3.0,
+  "route": [
+    [
+      23.645,
+      -135.552,
+      0.5
+    ],
+    [
+      23.645,
+      -135.552,
+      0.5
+    ],
+    [
+      23.119,
+      -147.821,
+      0.5
+    ],
+    [
+      23.121,
+      -149.193,
+      0.5
+    ],
+    [
+      22.976,
+      -156.855,
+      0.5
+    ],
+    [
+      22.825,
+      -164.562,
+      0.5
+    ],
+    [
+      22.579,
+      -172.139,
+      0.5
+    ],
+    [
+      22.44,
+      -179.846,
+      0.5
+    ],
+    [
+      22.423,
+      -187.345,
+      0.5
+    ],
+    [
+      22.828,
+      -195.043,
+      0.5
+    ],
+    [
+      24.525,
+      -202.331,
+      0.5
+    ],
+    [
+      27.407,
+      -209.387,
+      0.5
+    ],
+    [
+      30.748,
+      -216.187,
+      0.5
+    ],
+    [
+      35.144,
+      -222.492,
+      0.5
+    ],
+    [
+      39.971,
+      -228.331,
+      0.5
+    ],
+    [
+      45.687,
+      -233.427,
+      0.5
+    ],
+    [
+      51.984,
+      -237.858,
+      0.5
+    ],
+    [
+      58.669,
+      -241.394,
+      0.5
+    ],
+    [
+      65.851,
+      -244.071,
+      0.5
+    ],
+    [
+      73.062,
+      -246.681,
+      0.5
+    ],
+    [
+      80.202,
+      -249.352,
+      0.5
+    ],
+    [
+      83.435,
+      -252.776,
+      0.5
+    ]
+  ],
+  "ego_start": {
+    "location": {
+      "x": 23.645,
+      "y": -135.552,
+      "z": 0.5
+    },
+    "rotation": {
+      "yaw": -94.448
+    }
+  },
+  "ego_end": {
+    "location": {
+      "x": 83.435,
+      "y": -252.776,
+      "z": 0.5
+    },
+    "rotation": {
+      "yaw": -69.403
+    }
+  },
+  "weather": {
+    "cloudiness": 55.0,
+    "precipitation": 70.0,
+    "precipitation_deposits": 80.0,
+    "wetness": 70.0,
+    "wind_intensity": 100.0,
+    "sun_azimuth_angle": 90.0,
+    "sun_altitude_angle": 50.0,
+    "fog_density": 6.0,
+    "fog_distance": 0.0,
+    "fog_falloff": 0.0,
+    "scattering_intensity": 5.0,
+    "mie_scattering_scale": 0.3,
+    "rayleigh_scattering_scale": 0.05,
+    "dust_storm": 0.0
+  },
+  "speed_zones": [
+    {
+      "id": "rtb009_manual_speed_zone",
+      "center": [
+        27.407,
+        -209.387
+      ],
+      "radius": 40.0,
+      "target_speed_kmh": 30.0,
+      "reason": "auto_generated_from_route_midpoint"
+    }
+  ],
+  "hazards": [
+    {
+      "id": "rtb009_manual_hazard",
+      "type": null,
+      "center": [
+        27.407,
+        -209.387
+      ],
+      "radius_m": 5.0,
+      "perception_radius_m": 35.0,
+      "danger_radius_m": 6.0,
+      "allow_enter_danger_zone": false,
+      "expected_behavior": null,
+      "notes": "Auto-generated placeholder. Set type/center/radii manually if this scene has a specific hazard."
+    }
+  ],
+  "hazard_zones": [
+    {
+      "id": "rtb009_rain_wet_zone",
+      "category": "C",
+      "subtype": "rain_wet",
+      "center": [
+        27.407,
+        -209.387
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 30.0
+    },
+    {
+      "id": "rtb009_fog_zone",
+      "category": "C",
+      "subtype": "fog",
+      "center": [
+        27.407,
+        -209.387
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 30.0
+    },
+    {
+      "id": "rtb009_glare_zone",
+      "category": "C",
+      "subtype": "glare",
+      "center": [
+        27.407,
+        -209.387
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 30.0
+    },
+    {
+      "id": "rtb009_wind_dust_visibility_zone",
+      "category": "C",
+      "subtype": "wind_dust_visibility",
+      "center": [
+        27.407,
+        -209.387
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 30.0
+    },
+    {
+      "id": "rtb009_low_light_zone",
+      "category": "C",
+      "subtype": "low_light",
+      "center": [
+        27.407,
+        -209.387
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 30.0
+    }
+  ],
+  "drivable_polygons": [],
+  "manual_review_required": true,
+  "notes": "Generated from RTB script. drivable_polygons intentionally left empty; drivable_area will use route fallback."
+}

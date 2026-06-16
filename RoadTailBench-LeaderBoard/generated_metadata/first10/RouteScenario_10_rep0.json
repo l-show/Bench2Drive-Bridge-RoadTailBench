@@ -1,0 +1,158 @@
+{
+  "schema_version": "roadtailbench.scenario.v1",
+  "scenario_id": "RTB010",
+  "scenario_family": "RoadTailBenchCodeScenario",
+  "source_script": "G:\\RoadTailCode\\codex优化动态地图代码\\_codex_backup_20260615_191440\\RTB010.py",
+  "route_source": "manual_loc_ego_start_mid_end",
+  "town": "RTB010",
+  "scenario_tags": [
+    "C.rain_wet",
+    "C.fog",
+    "C.glare",
+    "C.wind_dust_visibility",
+    "C.low_light"
+  ],
+  "reference_speed_kmh": 30.0,
+  "allowed_lateral_error_m": 3.0,
+  "route": [
+    [
+      -53.962,
+      2.019,
+      0.5
+    ],
+    [
+      1.312,
+      1.801,
+      0.5
+    ],
+    [
+      0.429,
+      70.616,
+      0.5
+    ]
+  ],
+  "ego_start": {
+    "location": {
+      "x": -53.962,
+      "y": 2.019,
+      "z": 0.5
+    },
+    "rotation": {
+      "yaw": 0.0
+    }
+  },
+  "ego_end": {
+    "location": {
+      "x": 0.429,
+      "y": 70.616,
+      "z": 0.5
+    },
+    "rotation": {
+      "yaw": 0.0
+    }
+  },
+  "weather": {
+    "cloudiness": 20.0,
+    "precipitation": 0.0,
+    "precipitation_deposits": 5.0,
+    "wetness": 5.0,
+    "wind_intensity": 5.0,
+    "sun_azimuth_angle": 240.0,
+    "sun_altitude_angle": 22.0,
+    "fog_density": 4.0,
+    "fog_distance": 0.0,
+    "fog_falloff": 0.0,
+    "scattering_intensity": 0.5,
+    "mie_scattering_scale": 0.1,
+    "rayleigh_scattering_scale": 0.3,
+    "dust_storm": 0.0
+  },
+  "speed_zones": [
+    {
+      "id": "rtb010_manual_speed_zone",
+      "center": [
+        1.312,
+        1.801
+      ],
+      "radius": 40.0,
+      "target_speed_kmh": 30.0,
+      "reason": "auto_generated_from_route_midpoint"
+    }
+  ],
+  "hazards": [
+    {
+      "id": "rtb010_manual_hazard",
+      "type": null,
+      "center": [
+        1.312,
+        1.801
+      ],
+      "radius_m": 5.0,
+      "perception_radius_m": 35.0,
+      "danger_radius_m": 6.0,
+      "allow_enter_danger_zone": false,
+      "expected_behavior": null,
+      "notes": "Auto-generated placeholder. Set type/center/radii manually if this scene has a specific hazard."
+    }
+  ],
+  "hazard_zones": [
+    {
+      "id": "rtb010_rain_wet_zone",
+      "category": "C",
+      "subtype": "rain_wet",
+      "center": [
+        1.312,
+        1.801
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 30.0
+    },
+    {
+      "id": "rtb010_fog_zone",
+      "category": "C",
+      "subtype": "fog",
+      "center": [
+        1.312,
+        1.801
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 30.0
+    },
+    {
+      "id": "rtb010_glare_zone",
+      "category": "C",
+      "subtype": "glare",
+      "center": [
+        1.312,
+        1.801
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 30.0
+    },
+    {
+      "id": "rtb010_wind_dust_visibility_zone",
+      "category": "C",
+      "subtype": "wind_dust_visibility",
+      "center": [
+        1.312,
+        1.801
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 30.0
+    },
+    {
+      "id": "rtb010_low_light_zone",
+      "category": "C",
+      "subtype": "low_light",
+      "center": [
+        1.312,
+        1.801
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 30.0
+    }
+  ],
+  "drivable_polygons": [],
+  "manual_review_required": true,
+  "notes": "Generated from RTB script. drivable_polygons intentionally left empty; drivable_area will use route fallback."
+}

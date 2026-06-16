@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<routes>
+  <route id="1" town="RTB001">
+    <weathers>
+      <weather route_percentage="0" cloudiness="5.0" precipitation="0.0" precipitation_deposits="0.0" wetness="0.0" wind_intensity="10.0" sun_azimuth_angle="-1.0" sun_altitude_angle="15.0" fog_density="2.0" fog_distance="0.75" fog_falloff="0.1" />
+    </weathers>
+    <waypoints>
+      <position x="-23.472" y="25.188" z="1.0" />
+      <position x="33.477" y="-74.059" z="0.5" />
+    </waypoints>
+    <scenarios>
+      <scenario name="RTB001_ControlLoss_1" type="ControlLoss">
+        <trigger_point x="33.477" y="-74.059" z="0.5" yaw="-14.066" />
+      </scenario>
+    </scenarios>
+  </route>
+  <route id="2" town="RTB002">
+    <weathers>
+      <weather route_percentage="0" cloudiness="25.0" precipitation="35.0" precipitation_deposits="80.0" wetness="100.0" wind_intensity="20.0" sun_azimuth_angle="95.0" sun_altitude_angle="10.0" fog_density="4.0" fog_distance="0.0" fog_falloff="0.5" />
+    </weathers>
+    <waypoints>
+      <position x="-31.867" y="54.232" z="0.5" />
+      <position x="-34.582" y="-155.801" z="0.5" />
+    </waypoints>
+    <scenarios>
+      <scenario name="RTB002_ControlLoss_1" type="ControlLoss">
+        <trigger_point x="-33.783" y="-38.052" z="0.5" yaw="-92.24" />
+      </scenario>
+    </scenarios>
+  </route>
+  <route id="3" town="RTB003">
+    <weathers>
+      <weather route_percentage="0" cloudiness="25.0" precipitation="35.0" precipitation_deposits="80.0" wetness="100.0" wind_intensity="20.0" sun_azimuth_angle="95.0" sun_altitude_angle="10.0" fog_density="4.0" fog_distance="0.0" fog_falloff="0.5" />
+    </weathers>
+    <waypoints>
+      <position x="-26.962" y="43.165" z="1.5" />
+      <position x="-28.763" y="-151.187" z="0.5" />
+    </waypoints>
+    <scenarios>
+      <scenario name="RTB003_ControlLoss_1" type="ControlLoss">
+        <trigger_point x="-28.763" y="-151.187" z="0.5" yaw="-89.206" />
+      </scenario>
+    </scenarios>
+  </route>
+  <route id="4" town="RTB004">
+    <weathers>
+      <weather route_percentage="0" cloudiness="15.0" precipitation="100.0" precipitation_deposits="100.0" wetness="60.0" wind_intensity="10.0" sun_azimuth_angle="85.0" sun_altitude_angle="0.0" fog_density="24.0" fog_distance="5.0" fog_falloff="0.0" />
+    </weathers>
+    <waypoints>
+      <position x="-23.595" y="52.2" z="0.5" />
+      <position x="82.626" y="-137.275" z="0.5" />
+    </waypoints>
+    <scenarios>
+      <scenario name="RTB004_ControlLoss_1" type="ControlLoss">
+        <trigger_point x="16.175" y="-62.679" z="0.5" yaw="-29.216" />
+      </scenario>
+    </scenarios>
+  </route>
+  <route id="5" town="RTB005">
+    <weathers>
+      <weather route_percentage="0" cloudiness="25.0" precipitation="40.0" precipitation_deposits="70.0" wetness="40.0" wind_intensity="10.0" sun_azimuth_angle="115.0" sun_altitude_angle="14.0" fog_density="2.0" fog_distance="0.0" fog_falloff="0.0" />
+    </weathers>
+    <waypoints>
+      <position x="-23.7" y="47.344" z="0.5" />
+      <position x="76.699" y="-109.587" z="0.5" />
+    </waypoints>
+    <scenarios>
+      <scenario name="RTB005_ControlLoss_1" type="ControlLoss">
+        <trigger_point x="76.699" y="-109.587" z="0.5" yaw="-74.865" />
+      </scenario>
+    </scenarios>
+  </route>
+  <route id="6" town="RTB006">
+    <weathers>
+      <weather route_percentage="0" cloudiness="5.0" precipitation="0.0" precipitation_deposits="0.0" wetness="0.0" wind_intensity="10.0" sun_azimuth_angle="-1.0" sun_altitude_angle="45.0" fog_density="2.0" fog_distance="0.75" fog_falloff="0.1" />
+    </weathers>
+    <waypoints>
+      <position x="-5.497" y="-65.884" z="0.5" />
+      <position x="-21.768" y="112.626" z="0.5" />
+    </waypoints>
+    <scenarios>
+      <scenario name="RTB006_ControlLoss_1" type="ControlLoss">
+        <trigger_point x="-1.726" y="34.33" z="0.5" yaw="87.452" />
+      </scenario>
+    </scenarios>
+  </route>
+  <route id="7" town="RTB007">
+    <weathers>
+      <weather route_percentage="0" cloudiness="5.0" precipitation="0.0" precipitation_deposits="0.0" wetness="0.0" wind_intensity="10.0" sun_azimuth_angle="-1.0" sun_altitude_angle="45.0" fog_density="2.0" fog_distance="0.75" fog_falloff="0.0" />
+    </weathers>
+    <waypoints>
+      <position x="34.843" y="72.746" z="0.5" />
+      <position x="25.3" y="-77.5" z="0.5" />
+    </waypoints>
+    <scenarios>
+      <scenario name="RTB007_ControlLoss_1" type="ControlLoss">
+        <trigger_point x="34.8" y="72.7" z="0.5" yaw="0.0" />
+      </scenario>
+    </scenarios>
+  </route>
+  <route id="8" town="RTB008">
+    <weathers>
+      <weather route_percentage="0" cloudiness="10.0" precipitation="0.0" precipitation_deposits="0.0" wetness="0.0" wind_intensity="10.0" sun_azimuth_angle="85.0" sun_altitude_angle="14.0" fog_density="4.0" fog_distance="5.0" fog_falloff="0.0" />
+    </weathers>
+    <waypoints>
+      <position x="2.251" y="35.0" z="0.5" />
+      <position x="5.878" y="-207.286" z="0.5" />
+    </waypoints>
+    <scenarios>
+      <scenario name="RTB008_ControlLoss_1" type="ControlLoss">
+        <trigger_point x="5.878" y="-207.286" z="0.5" yaw="-67.86" />
+      </scenario>
+    </scenarios>
+  </route>
+  <route id="9" town="RTB009">
+    <weathers>
+      <weather route_percentage="0" cloudiness="55.0" precipitation="70.0" precipitation_deposits="80.0" wetness="70.0" wind_intensity="100.0" sun_azimuth_angle="90.0" sun_altitude_angle="50.0" fog_density="6.0" fog_distance="0.0" fog_falloff="0.0" />
+    </weathers>
+    <waypoints>
+      <position x="23.645" y="-135.552" z="0.5" />
+      <position x="83.435" y="-252.776" z="0.5" />
+    </waypoints>
+    <scenarios>
+      <scenario name="RTB009_ControlLoss_1" type="ControlLoss">
+        <trigger_point x="27.407" y="-209.387" z="0.5" yaw="-65.315" />
+      </scenario>
+    </scenarios>
+  </route>
+  <route id="10" town="RTB010">
+    <weathers>
+      <weather route_percentage="0" cloudiness="20.0" precipitation="0.0" precipitation_deposits="5.0" wetness="5.0" wind_intensity="5.0" sun_azimuth_angle="240.0" sun_altitude_angle="22.0" fog_density="4.0" fog_distance="0.0" fog_falloff="0.0" />
+    </weathers>
+    <waypoints>
+      <position x="-53.962" y="2.019" z="0.5" />
+      <position x="0.429" y="70.616" z="0.5" />
+    </waypoints>
+    <scenarios>
+      <scenario name="RTB010_ControlLoss_1" type="ControlLoss">
+        <trigger_point x="1.312" y="1.801" z="0.5" yaw="0.0" />
+      </scenario>
+    </scenarios>
+  </route>
+</routes>

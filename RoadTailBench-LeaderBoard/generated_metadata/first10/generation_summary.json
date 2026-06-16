@@ -1,0 +1,262 @@
+[
+  {
+    "id": "RTB001",
+    "route_source": "ego_spawn_plus_RAW_PATH_TRUCK",
+    "start": [
+      -23.472,
+      25.188,
+      1.0
+    ],
+    "end": [
+      33.477,
+      -74.059,
+      0.5
+    ],
+    "trigger": [
+      33.477,
+      -74.059,
+      0.5
+    ],
+    "tags": [
+      "C.rain_wet",
+      "C.fog",
+      "C.glare",
+      "C.wind_dust_visibility",
+      "B.emergency_avoidance"
+    ]
+  },
+  {
+    "id": "RTB002",
+    "route_source": "RAW_SUV_PATH_POINTS",
+    "start": [
+      -31.867,
+      54.232,
+      0.5
+    ],
+    "end": [
+      -34.582,
+      -155.801,
+      0.5
+    ],
+    "trigger": [
+      -33.783,
+      -38.052,
+      0.5
+    ],
+    "tags": [
+      "C.rain_wet",
+      "C.fog",
+      "C.glare",
+      "C.wind_dust_visibility",
+      "C.low_light"
+    ]
+  },
+  {
+    "id": "RTB003",
+    "route_source": "ego_spawn_plus_RAW_SUV_PATH_POINTS",
+    "start": [
+      -26.962,
+      43.165,
+      1.5
+    ],
+    "end": [
+      -28.763,
+      -151.187,
+      0.5
+    ],
+    "trigger": [
+      -28.763,
+      -151.187,
+      0.5
+    ],
+    "tags": [
+      "C.rain_wet",
+      "C.fog",
+      "C.glare",
+      "C.wind_dust_visibility",
+      "B.emergency_avoidance"
+    ]
+  },
+  {
+    "id": "RTB004",
+    "route_source": "RAW_VEHICLE_PATH_POINTS",
+    "start": [
+      -23.595,
+      52.2,
+      0.5
+    ],
+    "end": [
+      82.626,
+      -137.275,
+      0.5
+    ],
+    "trigger": [
+      16.175,
+      -62.679,
+      0.5
+    ],
+    "tags": [
+      "C.rain_wet",
+      "C.fog",
+      "C.glare",
+      "C.wind_dust_visibility",
+      "C.low_light"
+    ]
+  },
+  {
+    "id": "RTB005",
+    "route_source": "ego_spawn_plus_RAW_PATH_POINTS",
+    "start": [
+      -23.7,
+      47.344,
+      0.5
+    ],
+    "end": [
+      76.699,
+      -109.587,
+      0.5
+    ],
+    "trigger": [
+      76.699,
+      -109.587,
+      0.5
+    ],
+    "tags": [
+      "C.rain_wet",
+      "C.fog",
+      "C.glare",
+      "C.wind_dust_visibility",
+      "C.low_light"
+    ]
+  },
+  {
+    "id": "RTB006",
+    "route_source": "RAW_DATA",
+    "start": [
+      -5.497,
+      -65.884,
+      0.5
+    ],
+    "end": [
+      -21.768,
+      112.626,
+      0.5
+    ],
+    "trigger": [
+      -1.726,
+      34.33,
+      0.5
+    ],
+    "tags": [
+      "C.rain_wet",
+      "C.fog",
+      "C.glare",
+      "C.wind_dust_visibility",
+      "B.emergency_avoidance"
+    ]
+  },
+  {
+    "id": "RTB007",
+    "route_source": "manual_rtb007_known_good_xml",
+    "start": [
+      34.843,
+      72.746,
+      0.5
+    ],
+    "end": [
+      25.3,
+      -77.5,
+      0.5
+    ],
+    "trigger": [
+      34.8,
+      72.7,
+      0.5
+    ],
+    "tags": [
+      "C.rain_wet",
+      "C.fog",
+      "C.glare",
+      "C.wind_dust_visibility",
+      "C.low_light"
+    ]
+  },
+  {
+    "id": "RTB008",
+    "route_source": "ego_spawn_plus_RAW_MOTO_DATA",
+    "start": [
+      2.251,
+      35.0,
+      0.5
+    ],
+    "end": [
+      5.878,
+      -207.286,
+      0.5
+    ],
+    "trigger": [
+      5.878,
+      -207.286,
+      0.5
+    ],
+    "tags": [
+      "C.rain_wet",
+      "C.fog",
+      "C.glare",
+      "C.wind_dust_visibility",
+      "C.low_light"
+    ]
+  },
+  {
+    "id": "RTB009",
+    "route_source": "EGO_TRAJECTORY_DATA",
+    "start": [
+      23.645,
+      -135.552,
+      0.5
+    ],
+    "end": [
+      83.435,
+      -252.776,
+      0.5
+    ],
+    "trigger": [
+      27.407,
+      -209.387,
+      0.5
+    ],
+    "tags": [
+      "C.rain_wet",
+      "C.fog",
+      "C.glare",
+      "C.wind_dust_visibility",
+      "C.low_light"
+    ]
+  },
+  {
+    "id": "RTB010",
+    "route_source": "manual_loc_ego_start_mid_end",
+    "start": [
+      -53.962,
+      2.019,
+      0.5
+    ],
+    "end": [
+      0.429,
+      70.616,
+      0.5
+    ],
+    "trigger": [
+      1.312,
+      1.801,
+      0.5
+    ],
+    "tags": [
+      "C.rain_wet",
+      "C.fog",
+      "C.glare",
+      "C.wind_dust_visibility",
+      "C.low_light"
+    ]
+  }
+]

@@ -74,7 +74,7 @@ def build_argparser():
     parser.add_argument("--actor-log-radius-m", default=120.0, type=float)
     parser.add_argument("--scenario-args", default="", help="Passed to RTB scripts as ROADTAILBENCH_SCENARIO_ARGS.")
     parser.add_argument("--capture-scenario-stdout", action="store_true")
-    parser.add_argument("--dry-run", action="store_true", help="Connect/discover only; do not start RTB scripts.")
+    parser.add_argument("--dry-run", action="store_true", help="Discover scenes and metadata only; do not import CARLA or start RTB scripts.")
     return parser
 
 
@@ -87,8 +87,14 @@ def main():
     print(f"[RoadTailBench] ego_mode={args.ego_mode}", flush=True)
     print(f"[RoadTailBench] discovered {len(scenes)} scene(s)", flush=True)
     for scene in scenes:
-        print(f"  - {scene.scene_id}: {scene.script_path}", flush=True)
+        metadata = f" metadata={scene.metadata_path}" if scene.metadata_path else " metadata=<missing>"
+        print(f"  - {scene.scene_id}: {scene.script_path}{metadata}", flush=True)
     if not scenes:
+        return 0
+    if args.dry_run:
+        missing = [scene.scene_id for scene in scenes if not scene.metadata_path]
+        if missing:
+            print(f"[RoadTailBench] dry-run warning: missing metadata for {', '.join(missing)}", flush=True)
         return 0
     runner = RoadTailBenchScriptRunner(args)
     summaries = runner.run(scenes)

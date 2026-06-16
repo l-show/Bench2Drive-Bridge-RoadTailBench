@@ -73,13 +73,17 @@ def _transform_to_dict(transform):
 
 def _dict_to_transform(data):
     carla_module = _require_carla()
-    loc = data.get("location", data)
-    rot = data.get("rotation", {})
+    loc = data.get("location", data) if isinstance(data, dict) else data
+    rot = data.get("rotation", {}) if isinstance(data, dict) else {}
     return carla_module.Transform(
         carla_module.Location(
-            x=float(loc.get("x", loc[0] if isinstance(loc, list) else 0.0)),
-            y=float(loc.get("y", loc[1] if isinstance(loc, list) else 0.0)),
-            z=float(loc.get("z", loc[2] if isinstance(loc, list) and len(loc) > 2 else 0.5)),
+            x=float(loc.get("x", loc[0] if isinstance(loc, list) else 0.0) if isinstance(loc, dict) else loc[0]),
+            y=float(loc.get("y", loc[1] if isinstance(loc, list) else 0.0) if isinstance(loc, dict) else loc[1]),
+            z=float(
+                loc.get("z", loc[2] if isinstance(loc, list) and len(loc) > 2 else 0.5)
+                if isinstance(loc, dict)
+                else (loc[2] if len(loc) > 2 else 0.5)
+            ),
         ),
         carla_module.Rotation(
             pitch=float(rot.get("pitch", rot[0] if isinstance(rot, list) and len(rot) > 0 else 0.0)),
@@ -87,6 +91,26 @@ def _dict_to_transform(data):
             roll=float(rot.get("roll", rot[1] if isinstance(rot, list) and len(rot) > 1 else 0.0)),
         ),
     )
+
+
+def _metadata_location(data):
+    if not data:
+        return None
+    loc = data.get("location", data) if isinstance(data, dict) else data
+    try:
+        if isinstance(loc, dict):
+            return (
+                float(loc.get("x", 0.0)),
+                float(loc.get("y", 0.0)),
+                float(loc.get("z", 0.5)),
+            )
+        return (
+            float(loc[0]),
+            float(loc[1]),
+            float(loc[2] if len(loc) > 2 else 0.5),
+        )
+    except (TypeError, ValueError, IndexError):
+        return None
 
 
 def _load_json_if_exists(path):
@@ -315,23 +339,76 @@ class RoadTailBenchScriptRunner:
         settings.fixed_delta_seconds = None
         self.world.apply_settings(settings)
 
-    def _find_scene_ego(self):
-        role_names = [x.strip() for x in self.args.ego_role_name.split(",") if x.strip()]
-        actors = self.world.get_actors().filter("vehicle.*")
+    def _find_scene_ego(self, scene):
+        metadata = scene.metadata or {}
+        role_values = []
+        for key in ("ego_role_names", "ego_role_name"):
+            value = metadata.get(key)
+            if isinstance(value, list):
+                role_values.extend(value)
+            elif isinstance(value, str):
+                role_values.extend(value.split(","))
+        role_values.extend(self.args.ego_role_name.split(","))
+        role_names = []
+        for value in role_values:
+            value = str(value).strip()
+            if value and value not in role_names:
+                role_names.append(value)
+
+        actors = list(self.world.get_actors().filter("vehicle.*"))
         for role_name in role_names:
             for actor in actors:
                 if actor.attributes.get("role_name") == role_name:
                     return actor
-        ego_type_id = getattr(self.args, "ego_type_id", "")
+
+        ego_type_id = (
+            metadata.get("ego_type_id")
+            or metadata.get("ego_blueprint")
+            or getattr(self.args, "ego_type_id", "")
+        )
+        ego_start = _metadata_location(metadata.get("ego_start") or metadata.get("ego_spawn"))
         if ego_type_id:
             matches = [actor for actor in actors if actor.type_id == ego_type_id]
             if len(matches) == 1:
                 return matches[0]
+            if len(matches) > 1 and ego_start:
+                carla_module = _require_carla()
+                start_loc = carla_module.Location(x=ego_start[0], y=ego_start[1], z=ego_start[2])
+                ranked = []
+                for actor in matches:
+                    try:
+                        ranked.append((actor.get_location().distance(start_loc), actor))
+                    except RuntimeError:
+                        continue
+                ranked.sort(key=lambda item: item[0])
+                if ranked and (len(ranked) == 1 or ranked[0][0] + 1.0 < ranked[1][0]):
+                    return ranked[0][1]
+                if ranked and ranked[0][0] <= float(metadata.get("ego_start_match_radius_m", 8.0)):
+                    close = [
+                        item for item in ranked
+                        if item[0] <= float(metadata.get("ego_start_match_radius_m", 8.0))
+                    ]
+                    if len(close) == 1:
+                        return close[0][1]
             if len(matches) > 1:
                 raise RuntimeError(
-                    f"Found {len(matches)} vehicles with type_id={ego_type_id}; "
-                    "set a unique role_name on the ego vehicle or narrow --ego-type-id."
+                    f"{scene.scene_id}: found {len(matches)} vehicles with type_id={ego_type_id}; "
+                    "set ego role_name or provide ego_start metadata that uniquely identifies the ego."
                 )
+        if ego_start:
+            carla_module = _require_carla()
+            start_loc = carla_module.Location(x=ego_start[0], y=ego_start[1], z=ego_start[2])
+            ranked = []
+            for actor in actors:
+                try:
+                    ranked.append((actor.get_location().distance(start_loc), actor))
+                except RuntimeError:
+                    continue
+            ranked.sort(key=lambda item: item[0])
+            radius = float(metadata.get("ego_start_match_radius_m", 6.0))
+            close = [item for item in ranked if item[0] <= radius]
+            if len(close) == 1:
+                return close[0][1]
         if len(actors) == 1:
             return actors[0]
         return None
@@ -354,7 +431,12 @@ class RoadTailBenchScriptRunner:
 
     def _build_route_from_metadata(self, scene):
         metadata = scene.metadata or {}
-        raw_points = metadata.get("route") or metadata.get("route_waypoints") or []
+        raw_points = (
+            metadata.get("route")
+            or metadata.get("route_waypoints")
+            or metadata.get("centerline_route")
+            or []
+        )
         route = []
         for point in raw_points:
             transform = _dict_to_transform(point)
@@ -474,7 +556,7 @@ class RoadTailBenchScriptRunner:
             wait_deadline = time.time() + float(self.args.ego_wait_timeout)
             while time.time() < wait_deadline:
                 world.tick()
-                ego = ego or self._find_scene_ego()
+                ego = ego or self._find_scene_ego(scene)
                 if ego:
                     break
                 if proc and proc.poll() is not None:

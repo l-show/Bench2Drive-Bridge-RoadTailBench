@@ -1,52 +1,79 @@
 {
-  "schema_version": "roadtailbench.code_scene_metadata.v1",
-  "scenario_id": "RTB101",
-  "town": "Town_RoadTail_Example",
-  "description": "这里写中文场景说明：静态关卡由 RoadRunner/OpenDRIVE 构建，动态逻辑由 RTB101.py 控制。",
-  "ego_blueprint": "vehicle.tesla.model3",
+  "schema_version": "roadtailbench.code_scene_metadata.v2",
+  "scenario_id": "RTB116",
+  "town": "RTB116",
+  "description": "RTB script owns weather, actors, hazards, and dynamic logic. Bench2Drive XML/XOSC is not used.",
+  "ego_role_names": ["ego", "hero"],
+  "ego_type_id": "vehicle.audi.tt",
+  "ego_blueprint": "vehicle.audi.tt",
+  "ego_start_match_radius_m": 8.0,
   "ego_start": {
-    "location": { "x": 206.059, "y": -1.401, "z": 4.228 },
-    "rotation": { "pitch": -2.486, "yaw": 171.544, "roll": 0.0 }
+    "location": { "x": -286.98, "y": 326.222, "z": 0.5 },
+    "rotation": { "pitch": 0.0, "yaw": 9.84, "roll": 0.0 }
   },
   "ego_end": {
-    "location": { "x": 54.588, "y": -2.018, "z": 3.962 },
-    "rotation": { "pitch": 0.108, "yaw": 176.573, "roll": 0.0 }
+    "location": { "x": 252.75, "y": 315.718, "z": 0.5 },
+    "rotation": { "pitch": 0.0, "yaw": -19.712, "roll": 0.0 }
   },
-  "route_waypoints": [
-    { "location": { "x": 206.059, "y": -1.401, "z": 4.228 }, "rotation": { "yaw": 171.544 } },
-    { "location": { "x": 130.0, "y": -1.7, "z": 4.65 }, "rotation": { "yaw": 176.0 } },
-    { "location": { "x": 54.588, "y": -2.018, "z": 3.962 }, "rotation": { "yaw": 176.573 } }
+  "route": [
+    [-286.98, 326.222, 0.5],
+    [-211.834, 341.324, 0.5],
+    [-102.26, 363.403, 0.5],
+    [9.289, 371.157, 0.5],
+    [119.53, 353.408, 0.5],
+    [252.75, 315.718, 0.5]
   ],
-  "reference_speed_kmh": 35.0,
+  "centerline_route": [
+    [-286.98, 326.222, 0.5],
+    [-211.834, 341.324, 0.5],
+    [-102.26, 363.403, 0.5],
+    [9.289, 371.157, 0.5],
+    [119.53, 353.408, 0.5],
+    [252.75, 315.718, 0.5]
+  ],
+  "centerline_segments": [],
+  "centerline_source": "ego_trajectory_from_RTB_script",
+  "allowed_lateral_error_m": 2.0,
+  "hard_lateral_error_m": 4.0,
+  "reference_speed_kmh": 60.0,
   "speed_zones": [
     {
-      "name": "intersection_approach",
-      "center": [130.0, -1.7, 4.7],
-      "radius_m": 35.0,
-      "target_speed_kmh": 25.0
+      "id": "primary_hazard_speed_zone",
+      "center": [9.289, 371.157, 0.5],
+      "radius": 35.0,
+      "target_speed_kmh": 40.0,
+      "reason": "manual_or_auto_hazard"
     }
   ],
   "hazard_zones": [
     {
-      "name": "leaf_low_friction_conflict_zone",
-      "center": [108.5, -1.8, 4.7],
-      "radius_m": 24.0,
-      "hazard_type": "low_friction_intersection_conflict"
+      "id": "primary_hazard_zone",
+      "category": "B",
+      "subtype": "emergency_avoidance",
+      "center": [9.289, 371.157, 0.5],
+      "radius_m": 8.0,
+      "target_speed_kmh": 40.0
     }
   ],
   "hazards": [
     {
-      "name": "background_vehicle_release",
-      "type": "vehicle_conflict",
-      "trigger": "ego_near_stop_decision_zone",
-      "center": [108.5, -1.8, 4.7]
+      "id": "primary_hazard",
+      "type": "vehicle_or_road_engineering_hazard",
+      "center": [9.289, 371.157, 0.5],
+      "radius_m": 8.0,
+      "perception_radius_m": 35.0,
+      "danger_radius_m": 4.0,
+      "allow_enter_danger_zone": false,
+      "expected_behavior": "slow_or_avoid"
     }
   ],
   "scenario_tags": [
-    "glare",
-    "abnormal_traffic_light",
-    "missing_stop_line",
-    "low_friction",
-    "intersection_conflict"
+    "B.emergency_avoidance",
+    "C.fog"
+  ],
+  "drivable_polygons": [],
+  "notes": [
+    "drivable_area is evaluated as centerline deviation, not polygon containment.",
+    "Use centerline_segments when a scenario has explicit lane-level centerlines."
   ]
 }

@@ -1,0 +1,569 @@
+{
+  "schema_version": "roadtailbench.code_scene_metadata.v2",
+  "scenario_id": "RTB118",
+  "town": "RTB118",
+  "description": "Auto-extracted metadata for RTB118; RTB script owns dynamic scenario logic, no Bench2Drive XML is required.",
+  "metadata_quality": "auto_extracted_minimal_review_recommended",
+  "ego_role_names": [
+    "ego",
+    "hero"
+  ],
+  "ego_type_id": "vehicle.audi.tt",
+  "ego_blueprint": "vehicle.audi.tt",
+  "ego_start_match_radius_m": 8.0,
+  "ego_start": {
+    "location": {
+      "x": 3.04,
+      "y": 117.364,
+      "z": 0.5
+    },
+    "rotation": {
+      "pitch": 0.0,
+      "yaw": -89.045,
+      "roll": 0.0
+    }
+  },
+  "ego_end": {
+    "location": {
+      "x": 2.762,
+      "y": -192.887,
+      "z": 0.5
+    },
+    "rotation": {
+      "pitch": 0.0,
+      "yaw": -90.611,
+      "roll": 0.0
+    }
+  },
+  "route": [
+    [
+      3.04,
+      117.364,
+      0.5
+    ],
+    [
+      3.092,
+      113.43,
+      0.5
+    ],
+    [
+      3.153,
+      102.012,
+      0.5
+    ],
+    [
+      2.972,
+      90.589,
+      0.5
+    ],
+    [
+      2.82,
+      79.34,
+      0.5
+    ],
+    [
+      2.733,
+      67.903,
+      0.5
+    ],
+    [
+      2.825,
+      56.282,
+      0.5
+    ],
+    [
+      2.92,
+      45.035,
+      0.5
+    ],
+    [
+      2.917,
+      33.599,
+      0.5
+    ],
+    [
+      2.917,
+      25.911,
+      0.5
+    ],
+    [
+      2.814,
+      20.662,
+      0.5
+    ],
+    [
+      2.593,
+      9.414,
+      0.5
+    ],
+    [
+      2.416,
+      -2.209,
+      0.5
+    ],
+    [
+      2.421,
+      -13.834,
+      0.5
+    ],
+    [
+      2.588,
+      -25.271,
+      0.5
+    ],
+    [
+      2.756,
+      -36.524,
+      0.5
+    ],
+    [
+      2.907,
+      -47.773,
+      0.5
+    ],
+    [
+      3.011,
+      -59.397,
+      0.5
+    ],
+    [
+      2.998,
+      -71.022,
+      0.5
+    ],
+    [
+      2.792,
+      -82.646,
+      0.5
+    ],
+    [
+      2.578,
+      -93.519,
+      0.5
+    ],
+    [
+      2.523,
+      -96.331,
+      0.5
+    ],
+    [
+      2.374,
+      -107.767,
+      0.5
+    ],
+    [
+      2.604,
+      -119.014,
+      0.5
+    ],
+    [
+      2.869,
+      -130.26,
+      0.5
+    ],
+    [
+      3.045,
+      -141.698,
+      0.5
+    ],
+    [
+      3.139,
+      -153.325,
+      0.5
+    ],
+    [
+      3.064,
+      -164.574,
+      0.5
+    ],
+    [
+      2.94,
+      -176.199,
+      0.5
+    ],
+    [
+      2.82,
+      -187.45,
+      0.5
+    ],
+    [
+      2.762,
+      -192.887,
+      0.5
+    ]
+  ],
+  "route_waypoints": [
+    [
+      3.04,
+      117.364,
+      0.5
+    ],
+    [
+      3.092,
+      113.43,
+      0.5
+    ],
+    [
+      3.153,
+      102.012,
+      0.5
+    ],
+    [
+      2.972,
+      90.589,
+      0.5
+    ],
+    [
+      2.82,
+      79.34,
+      0.5
+    ],
+    [
+      2.733,
+      67.903,
+      0.5
+    ],
+    [
+      2.825,
+      56.282,
+      0.5
+    ],
+    [
+      2.92,
+      45.035,
+      0.5
+    ],
+    [
+      2.917,
+      33.599,
+      0.5
+    ],
+    [
+      2.917,
+      25.911,
+      0.5
+    ],
+    [
+      2.814,
+      20.662,
+      0.5
+    ],
+    [
+      2.593,
+      9.414,
+      0.5
+    ],
+    [
+      2.416,
+      -2.209,
+      0.5
+    ],
+    [
+      2.421,
+      -13.834,
+      0.5
+    ],
+    [
+      2.588,
+      -25.271,
+      0.5
+    ],
+    [
+      2.756,
+      -36.524,
+      0.5
+    ],
+    [
+      2.907,
+      -47.773,
+      0.5
+    ],
+    [
+      3.011,
+      -59.397,
+      0.5
+    ],
+    [
+      2.998,
+      -71.022,
+      0.5
+    ],
+    [
+      2.792,
+      -82.646,
+      0.5
+    ],
+    [
+      2.578,
+      -93.519,
+      0.5
+    ],
+    [
+      2.523,
+      -96.331,
+      0.5
+    ],
+    [
+      2.374,
+      -107.767,
+      0.5
+    ],
+    [
+      2.604,
+      -119.014,
+      0.5
+    ],
+    [
+      2.869,
+      -130.26,
+      0.5
+    ],
+    [
+      3.045,
+      -141.698,
+      0.5
+    ],
+    [
+      3.139,
+      -153.325,
+      0.5
+    ],
+    [
+      3.064,
+      -164.574,
+      0.5
+    ],
+    [
+      2.94,
+      -176.199,
+      0.5
+    ],
+    [
+      2.82,
+      -187.45,
+      0.5
+    ],
+    [
+      2.762,
+      -192.887,
+      0.5
+    ]
+  ],
+  "centerline_route": [
+    [
+      3.04,
+      117.364,
+      0.5
+    ],
+    [
+      3.092,
+      113.43,
+      0.5
+    ],
+    [
+      3.153,
+      102.012,
+      0.5
+    ],
+    [
+      2.972,
+      90.589,
+      0.5
+    ],
+    [
+      2.82,
+      79.34,
+      0.5
+    ],
+    [
+      2.733,
+      67.903,
+      0.5
+    ],
+    [
+      2.825,
+      56.282,
+      0.5
+    ],
+    [
+      2.92,
+      45.035,
+      0.5
+    ],
+    [
+      2.917,
+      33.599,
+      0.5
+    ],
+    [
+      2.917,
+      25.911,
+      0.5
+    ],
+    [
+      2.814,
+      20.662,
+      0.5
+    ],
+    [
+      2.593,
+      9.414,
+      0.5
+    ],
+    [
+      2.416,
+      -2.209,
+      0.5
+    ],
+    [
+      2.421,
+      -13.834,
+      0.5
+    ],
+    [
+      2.588,
+      -25.271,
+      0.5
+    ],
+    [
+      2.756,
+      -36.524,
+      0.5
+    ],
+    [
+      2.907,
+      -47.773,
+      0.5
+    ],
+    [
+      3.011,
+      -59.397,
+      0.5
+    ],
+    [
+      2.998,
+      -71.022,
+      0.5
+    ],
+    [
+      2.792,
+      -82.646,
+      0.5
+    ],
+    [
+      2.578,
+      -93.519,
+      0.5
+    ],
+    [
+      2.523,
+      -96.331,
+      0.5
+    ],
+    [
+      2.374,
+      -107.767,
+      0.5
+    ],
+    [
+      2.604,
+      -119.014,
+      0.5
+    ],
+    [
+      2.869,
+      -130.26,
+      0.5
+    ],
+    [
+      3.045,
+      -141.698,
+      0.5
+    ],
+    [
+      3.139,
+      -153.325,
+      0.5
+    ],
+    [
+      3.064,
+      -164.574,
+      0.5
+    ],
+    [
+      2.94,
+      -176.199,
+      0.5
+    ],
+    [
+      2.82,
+      -187.45,
+      0.5
+    ],
+    [
+      2.762,
+      -192.887,
+      0.5
+    ]
+  ],
+  "centerline_source": "ego_trajectory_from_RTB_script",
+  "allowed_lateral_error_m": 2.0,
+  "hard_lateral_error_m": 4.0,
+  "reference_speed_kmh": 60.0,
+  "speed_zones": [
+    {
+      "id": "rtb118_hazard_speed_zone",
+      "center": [
+        2.756,
+        -36.524,
+        0.5
+      ],
+      "radius": 35.0,
+      "target_speed_kmh": 40.0,
+      "reason": "pedestrian_and_opposing_vehicle",
+      "metadata_quality": "auto_extracted_review_recommended"
+    }
+  ],
+  "hazard_zones": [
+    {
+      "id": "rtb118_primary_hazard_zone",
+      "category": "B",
+      "subtype": "yielding_priority",
+      "center": [
+        2.756,
+        -36.524,
+        0.5
+      ],
+      "radius_m": 8.0,
+      "target_speed_kmh": 40.0,
+      "metadata_quality": "auto_extracted_review_recommended"
+    }
+  ],
+  "hazards": [
+    {
+      "id": "rtb118_primary_hazard",
+      "type": "pedestrian_and_opposing_vehicle",
+      "center": [
+        2.756,
+        -36.524,
+        0.5
+      ],
+      "radius_m": 8.0,
+      "perception_radius_m": 35.0,
+      "danger_radius_m": 4.0,
+      "allow_enter_danger_zone": false,
+      "expected_behavior": "slow_or_avoid",
+      "metadata_quality": "auto_extracted_review_recommended"
+    }
+  ],
+  "scenario_tags": [
+    "B.yielding_priority",
+    "C.glare"
+  ],
+  "drivable_polygons": [],
+  "notes": [
+    "Bench2Drive XML/XOSC is intentionally not used for this RoadTailBench code scenario.",
+    "drivable_area metric is evaluated as centerline deviation using centerline_route.",
+    "Hazard coordinates are conservative auto-extracted placeholders unless explicitly known; manually refine them before final benchmark reporting."
+  ]
+}

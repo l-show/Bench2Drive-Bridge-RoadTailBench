@@ -1,0 +1,263 @@
+{
+  "schema_version": "roadtailbench.scenario.v1",
+  "scenario_id": "RTB006",
+  "scenario_family": "RoadTailBenchCodeScenario",
+  "source_script": "G:\\RoadTailCode\\codex优化动态地图代码\\_codex_backup_20260615_191440\\RTB006.py",
+  "route_source": "RAW_DATA",
+  "town": "RTB006",
+  "scenario_tags": [
+    "C.rain_wet",
+    "C.fog",
+    "C.glare",
+    "C.wind_dust_visibility",
+    "B.emergency_avoidance"
+  ],
+  "reference_speed_kmh": 50.0,
+  "allowed_lateral_error_m": 3.0,
+  "route": [
+    [
+      -5.497,
+      -65.884,
+      0.5
+    ],
+    [
+      -5.159,
+      -56.053,
+      0.5
+    ],
+    [
+      -3.802,
+      -47.321,
+      0.5
+    ],
+    [
+      -0.684,
+      -39.1,
+      0.5
+    ],
+    [
+      -0.102,
+      -30.205,
+      0.5
+    ],
+    [
+      0.187,
+      -21.314,
+      0.5
+    ],
+    [
+      0.349,
+      -12.46,
+      0.5
+    ],
+    [
+      -0.115,
+      -3.638,
+      0.5
+    ],
+    [
+      -1.769,
+      5.145,
+      0.5
+    ],
+    [
+      -2.177,
+      13.975,
+      0.5
+    ],
+    [
+      -2.308,
+      22.866,
+      0.5
+    ],
+    [
+      -1.843,
+      31.749,
+      0.5
+    ],
+    [
+      -1.591,
+      40.639,
+      0.5
+    ],
+    [
+      -1.453,
+      49.544,
+      0.5
+    ],
+    [
+      -0.889,
+      58.443,
+      0.5
+    ],
+    [
+      -0.578,
+      67.311,
+      0.5
+    ],
+    [
+      -0.364,
+      76.243,
+      0.5
+    ],
+    [
+      -0.099,
+      85.116,
+      0.5
+    ],
+    [
+      0.024,
+      93.989,
+      0.5
+    ],
+    [
+      0.338,
+      102.922,
+      0.5
+    ],
+    [
+      -3.682,
+      110.458,
+      0.5
+    ],
+    [
+      -12.266,
+      111.962,
+      0.5
+    ],
+    [
+      -21.033,
+      112.396,
+      0.5
+    ],
+    [
+      -21.768,
+      112.626,
+      0.5
+    ]
+  ],
+  "ego_start": {
+    "location": {
+      "x": -5.497,
+      "y": -65.884,
+      "z": 0.5
+    },
+    "rotation": {
+      "yaw": 72.942
+    }
+  },
+  "ego_end": {
+    "location": {
+      "x": -21.768,
+      "y": 112.626,
+      "z": 0.5
+    },
+    "rotation": {
+      "yaw": 162.591
+    }
+  },
+  "weather": {
+    "cloudiness": 5.0,
+    "precipitation": 0.0,
+    "precipitation_deposits": 0.0,
+    "wetness": 0.0,
+    "wind_intensity": 10.0,
+    "sun_azimuth_angle": -1.0,
+    "sun_altitude_angle": 45.0,
+    "fog_density": 2.0,
+    "fog_distance": 0.75,
+    "fog_falloff": 0.1,
+    "scattering_intensity": 1.0,
+    "mie_scattering_scale": 0.03,
+    "rayleigh_scattering_scale": 0.0331,
+    "dust_storm": 0.0
+  },
+  "speed_zones": [
+    {
+      "id": "rtb006_manual_speed_zone",
+      "center": [
+        -1.726,
+        34.33
+      ],
+      "radius": 40.0,
+      "target_speed_kmh": 35.0,
+      "reason": "auto_generated_from_route_midpoint"
+    }
+  ],
+  "hazards": [
+    {
+      "id": "rtb006_manual_hazard",
+      "type": null,
+      "center": [
+        -1.726,
+        34.33
+      ],
+      "radius_m": 5.0,
+      "perception_radius_m": 35.0,
+      "danger_radius_m": 6.0,
+      "allow_enter_danger_zone": false,
+      "expected_behavior": null,
+      "notes": "Auto-generated placeholder. Set type/center/radii manually if this scene has a specific hazard."
+    }
+  ],
+  "hazard_zones": [
+    {
+      "id": "rtb006_rain_wet_zone",
+      "category": "C",
+      "subtype": "rain_wet",
+      "center": [
+        -1.726,
+        34.33
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 35.0
+    },
+    {
+      "id": "rtb006_fog_zone",
+      "category": "C",
+      "subtype": "fog",
+      "center": [
+        -1.726,
+        34.33
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 35.0
+    },
+    {
+      "id": "rtb006_glare_zone",
+      "category": "C",
+      "subtype": "glare",
+      "center": [
+        -1.726,
+        34.33
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 35.0
+    },
+    {
+      "id": "rtb006_wind_dust_visibility_zone",
+      "category": "C",
+      "subtype": "wind_dust_visibility",
+      "center": [
+        -1.726,
+        34.33
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 35.0
+    },
+    {
+      "id": "rtb006_emergency_avoidance_zone",
+      "category": "B",
+      "subtype": "emergency_avoidance",
+      "center": [
+        -1.726,
+        34.33
+      ],
+      "radius_m": 35.0,
+      "target_speed_kmh": 35.0
+    }
+  ],
+  "drivable_polygons": [],
+  "manual_review_required": true,
+  "notes": "Generated from RTB script. drivable_polygons intentionally left empty; drivable_area will use route fallback."
+}
