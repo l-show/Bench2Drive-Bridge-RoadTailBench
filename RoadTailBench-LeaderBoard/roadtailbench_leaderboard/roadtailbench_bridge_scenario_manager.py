@@ -1,3 +1,5 @@
+import os
+
 import carla
 import py_trees
 
@@ -14,6 +16,7 @@ class RoadTailBenchBridgeScenarioManager(ScenarioManager):
     def __init__(self, timeout, statistics_manager, debug_mode=0):
         super().__init__(timeout, statistics_manager, debug_mode)
         self.roadtailbench_logger = None
+        self.roadtailbench_max_ticks = int(os.environ.get("ROADTAILBENCH_MAX_TICKS", "0") or "0")
 
     def set_roadtailbench_logger(self, logger):
         self.roadtailbench_logger = logger
@@ -33,6 +36,8 @@ class RoadTailBenchBridgeScenarioManager(ScenarioManager):
             self.tick_count += 1
             self._watchdog.pause()
 
+            if self.roadtailbench_max_ticks and self.tick_count > self.roadtailbench_max_ticks:
+                raise TickRuntimeError(f"RoadTailBench tick_count > {self.roadtailbench_max_ticks}")
             if self.tick_count > 4000:
                 raise TickRuntimeError("RuntimeError, tick_count > 4000")
 
